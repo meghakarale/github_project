@@ -34,8 +34,8 @@ pipeline {
 	stage('master-branch-stuff') {
 when {
   anyOf {
-    changeset: "file1.txt"
-    changeset: "file2.txt"
+    changeset "file1.txt"
+    changeset "file2.txt"
   }
 }
     steps {
