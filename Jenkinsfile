@@ -22,5 +22,13 @@ pipeline {
 	            echo 'Testing.. the application'
 	            }
 	   }
+	stage('master-branch-stuff') {
+    when {
+        branch 'master'
+    }
+    steps {
+        echo 'run this stage - ony if the branch = master branch'
+    }
+}
     }
 }
