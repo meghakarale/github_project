@@ -23,9 +23,9 @@ pipeline {
 	            }
 	   }
 	stage('master-branch-stuff') {
-    when {
-        branch 'master'
-    }
+when {
+                changeset "Dockerfile"
+            }
     steps {
         echo 'run this stage - ony if the branch = master branch'
     }
