@@ -8,12 +8,21 @@ pipeline {
 	        }
 	   }
 	   stage('Build Image') {
+	   when {
+                changeset "Dockerfile"
+            }
 	        steps {
 	        bat 'docker build -t mynlpmodel:v1 .'
 	        }
 	   }
 	   stage('Run Image') {
 	        steps {
+			
+			bat 'docker stop nlpmodel || exit 0' 
+
+			bat 'docker rm nlpmodel || exit 0'
+
+			
 	        bat 'docker run -d --name nlpmodel mynlpmodel:v1'
 	        }
 	   }
