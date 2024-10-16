@@ -33,10 +33,13 @@ pipeline {
 	   }
 	stage('master-branch-stuff') {
 when {
-                changeset "Dockerfile"
-            }
+  anyOf {
+    changeset: "file1.txt"
+    changeset: "file2.txt"
+  }
+}
     steps {
-        echo 'run this stage - ony if the branch = master branch'
+        echo 'run this stage - ony if file1 or file2 changes'
     }
 }
     }
