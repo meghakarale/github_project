@@ -2,7 +2,7 @@
 
 FROM python:3.7
 
-# Copy the project files from localMac to Container Path
+# Copy the project files from localMac 
 
 COPY .   /usr/ML/app
 
