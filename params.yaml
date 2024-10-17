@@ -1,0 +1,9 @@
+base_params:
+  random_state: 0
+  test_size: 0.2
+
+
+model_params:
+  RandomForest:
+    n_estimators: 0.5
+
