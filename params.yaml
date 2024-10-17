@@ -5,5 +5,5 @@ base_params:
 
 model_params:
   RandomForest:
-    n_estimators: 0.5
+    n_estimators: 10
 
