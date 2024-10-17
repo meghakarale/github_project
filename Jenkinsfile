@@ -7,9 +7,47 @@ pipeline {
 	        checkout scm
 	        }
 	   }
+	   
+
+        stage('split_data') {
+		when {
+  anyOf {
+    changeset "flower_data.csv"
+    
+  }
+            steps {
+                echo 'Running split datajob'
+                build 'splitdata'
+                }
+            }
+
+        stage('train') {
+		when {
+  anyOf {
+    changeset "params.yaml"
+    changeset "flower_data.csv"
+  }
+            steps {
+                echo 'Running train job'
+                build 'train'
+                }
+            }
+        stage('evaluate') {
+		anyOf {
+    changeset "params.yaml"
+    changeset "flower_data.csv"
+  }
+            steps {
+                echo 'Running evaluate Job'
+                build 'evaluate'
+                 }
+            }
+	   	   
 	   stage('Build Image') {
 	   when {
                 changeset "Dockerfile"
+				changeset "params.yaml"
+				changeset "flower_data.csv"
             }
 	        steps {
 	        bat 'docker build -t mynlpmodel:v1 .'
