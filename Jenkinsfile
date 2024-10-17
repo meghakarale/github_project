@@ -58,18 +58,18 @@ pipeline {
             }
 			}
 	        steps {
-	        bat 'docker build -t mynlpmodel:v1 .'
+	        bat 'docker build -t irismodel:v1 .'
 	        }
 	   }
 	   stage('Run Image') {
 	        steps {
 			
-			bat 'docker stop nlpmodel || exit 0' 
+			bat 'docker stop irismodelc || exit 0' 
 
-			bat 'docker rm nlpmodel || exit 0'
+			bat 'docker rm irismodelc || exit 0'
 
 			
-	        bat 'docker run -d --name nlpmodel mynlpmodel:v1'
+	        bat 'docker run -d -p 8005:8005 --name irismodelc irismodel:v1'
 	        }
 	   }
 	   stage('Testing'){
