@@ -6,7 +6,7 @@ FROM python:3.8-bookworm
 
 COPY .   /usr/ML/app
 
-# Expose the port within Container 
+
 
 EXPOSE 8005
 
