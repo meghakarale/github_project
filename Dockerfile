@@ -1,15 +1,11 @@
 
-# Maintainer developer
-
 FROM python:3.7
 
-# copy this in container
-
-COPY .   /usr/ML/app
+COPY   .     /usr/ML/appnew
 
 EXPOSE 8005
 
-WORKDIR /usr/ML/app
+WORKDIR   /usr/ML/appnew
 
 RUN pip install -r requirements.txt
 
