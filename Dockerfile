@@ -3,6 +3,8 @@
 
 FROM python:3.7
 
+# copy this in container
+
 COPY .   /usr/ML/app
 
 EXPOSE 8005
