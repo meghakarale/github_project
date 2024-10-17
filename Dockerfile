@@ -17,7 +17,7 @@ WORKDIR /usr/ML/app
 # Install the required software
 
 RUN pip install -r requirements.txt
-RUN python setup.py install
+
 
 # Within the container the application startup command when we run container
 
