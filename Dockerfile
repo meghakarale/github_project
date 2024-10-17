@@ -19,6 +19,6 @@ WORKDIR /usr/ML/app
 RUN pip install -r requirements.txt
 
 
-# Within the container the application startup command when we run container
+
 
 CMD python Iris_flasgger_appRequest.py
