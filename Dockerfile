@@ -1,6 +1,6 @@
 # Mention base image
 
-FROM python:3.7-bookworm
+FROM python:3.7
 
 # Copy the project files from localMac to Container Path
 
