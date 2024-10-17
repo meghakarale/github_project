@@ -15,11 +15,13 @@ pipeline {
     changeset "flower_data.csv"
     
   }
+  }
             steps {
                 echo 'Running split datajob'
                 build 'splitdata'
                 }
             }
+			
 
         stage('train') {
 		when {
@@ -27,15 +29,19 @@ pipeline {
     changeset "params.yaml"
     changeset "flower_data.csv"
   }
+  }
             steps {
                 echo 'Running train job'
                 build 'train'
                 }
             }
+			
         stage('evaluate') {
+		when{
 		anyOf {
     changeset "params.yaml"
     changeset "flower_data.csv"
+  }
   }
             steps {
                 echo 'Running evaluate Job'
@@ -45,10 +51,12 @@ pipeline {
 	   	   
 	   stage('Build Image') {
 	   when {
+	   anyOf {
                 changeset "Dockerfile"
 				changeset "params.yaml"
 				changeset "flower_data.csv"
             }
+			}
 	        steps {
 	        bat 'docker build -t mynlpmodel:v1 .'
 	        }
@@ -80,5 +88,9 @@ when {
         echo 'run this stage - ony if file1 or file2 changes'
     }
 }
-    }
+
+
+
+
+}
 }
