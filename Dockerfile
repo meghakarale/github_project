@@ -1,12 +1,23 @@
+# Mention Base Image
 
-FROM python:3.7
+FROM python:3.8-bookworm
 
-COPY   .  /usr/ML/app
+# Copy the project Files from PodmanIrisProject Folder on our lapotp into Container 
 
-EXPOSE 8005
+COPY  .    /usr/ML/app
 
-WORKDIR   /usr/ML/app
+# Expose the port withon Container on which the streamlit application is Running
+
+EXPOSE 8501
+
+#set the current workdir within container
+
+WORKDIR /usr/ML/app
+
+#Install required packages within container
 
 RUN pip install -r requirements.txt
 
-CMD python Iris_flasgger_appRequest.py
+# within the container the application startup command
+
+CMD streamlit run appRequest_stream.py 
