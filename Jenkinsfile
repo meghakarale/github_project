@@ -69,7 +69,7 @@ pipeline {
 			bat 'docker rm irismodelc || exit 0'
 
 			
-	        bat 'docker run -d -p 8005:8005 --name irismodelc irismodel:v1'
+	        bat 'docker run -d -p 8501:8501 --name irismodelc irismodel:v1'
 	        }
 	   }
 	   stage('Testing'){
