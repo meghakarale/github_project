@@ -58,7 +58,7 @@ pipeline {
             }
 			}
 	        steps {
-	        bat 'docker build -t irismodel:v1 .'
+	        bat 'docker buildx build -t irismodel:v1 .'
 	        }
 	   }
 	   stage('Run Image') {
